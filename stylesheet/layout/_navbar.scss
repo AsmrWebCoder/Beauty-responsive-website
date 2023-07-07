@@ -1,0 +1,9 @@
+.navbar{
+    padding: 2rem 3rem;
+    @include flex(space-between);
+    &__nav{
+        @media only screen and (max-width:992px) {
+            flex-grow: 0;
+        }
+    }
+}

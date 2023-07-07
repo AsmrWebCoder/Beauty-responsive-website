@@ -1,0 +1,10 @@
+.section{
+    display: grid;
+    place-content: center;
+    color: $color-white;
+    margin-top: 10rem;
+    font-size: 3rem;
+}
+.section p{
+    text-align: center;
+}

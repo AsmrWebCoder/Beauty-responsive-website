@@ -1,0 +1,19 @@
+.btn{
+    width: 30rem;
+    height: 5rem;
+    margin: 5rem;
+    background-color: transparent;
+    border-radius: 9rem;
+    border: .2rem solid darken($color-golden,20%);
+    font-weight: bold;
+    color: $color-golden1;
+    transition: all .3s ease-in-out;
+    &:hover{
+        & >span{
+            transform: scale(1.1);
+        }
+        background-color: lighten($color: #000000, $amount: 10%);
+        transform: scale(1.1);
+        box-shadow: 0 5px 15px rgba($color-golden ,1);
+    }
+}

@@ -1,0 +1,105 @@
+.nav {
+    &__lists {
+        position: relative;
+        @include flex(center, center);
+    }
+    &__link {
+        position: relative;
+        display: block;
+        padding: 1.3rem;
+        color: $color-golden;
+        transition: all 0.3s ease;
+        &:hover {
+            color: darken($color-golden, 20%);
+            &::after {
+                width: 100%;
+            }
+        }
+        &::after {
+            position: absolute;
+            content: "";
+            bottom: 0;
+            left: 50%;
+            width: 0%;
+            height: 0.3rem;
+            background-color: $color-golden;
+            transform: translateX(-50%);
+            transition: all 0.3s ease;
+        }
+    }
+    // burgerMenu
+    &__input{
+        display: none;
+    }
+    &__label{
+        @include flex(space-evenly, false, column);
+        width: 4rem;
+        height: 4rem;
+        cursor: pointer;
+        user-select: none;
+        @media only screen and (min-width:769px) {
+            display: none;
+        }
+        &>span{
+            height: .5rem;
+            border-radius: .5rem;
+            background-color: $color-golden;
+            transition: all .3s ease;
+            animation:burgerMenu 3s ease infinite alternate;
+        }
+        & :nth-child(1){
+            width: 80%;
+        }
+        & :nth-child(2){
+            width: 100%;
+        }
+        & :nth-child(3){
+            width: 60%;
+        }
+    }
+    // responsive
+    @media only screen and (max-width:768px) {
+        &__mobile-wrap{
+            position: fixed;
+            top: 9.2rem;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            z-index: 100;
+            display: none;
+            width: 100vw;
+            height: auto;
+            background-color: $color-golden1;
+        }
+        &__input:checked{
+            & ~.nav__mobile-wrap{
+                display: block;
+                & .nav__lists{
+                    flex-direction: column;
+                }
+                & .nav__link{
+                    width:  calc(100vw - 3rem);
+                }
+                & .nav__list:not(:last-child){
+                    border-bottom: .1rem solid darken($color-golden , 40%);
+                }
+                
+            }
+            & ~ .nav__label :nth-child(1){
+                width: 50%;
+                transform: rotate(45deg) translate(.5rem,.1rem);
+                transform-origin: bottom;
+            }
+            & ~ .nav__label :nth-child(2){
+                transform: rotate(-45deg);
+            }
+            & ~ .nav__label :nth-child(3){
+                width: 50%;
+                transform: rotate(45deg) translate(.9rem,-1.5rem);
+            }
+
+        }
+    }
+}
